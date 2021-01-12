@@ -2,6 +2,28 @@
 <resources>
     <string name="app_name">Political Preparedness</string>
 
-    <!-- TODO: Add necessary string values -->
+    <string name="upcoming_election">Upcoming Elections</string>
+    <string name="find_my_representatives">Find My Representatives</string>
+    <string name="use_my_location">Use My Location</string>
+    <string name="my_representatives">My Representatives</string>
+    <string name="representative_search">Representative Search</string>
+
+    <string name="no_vote_info">No vote info available</string>
+    <string name="saved_elections">Saved Elections</string>
+
+    <string name="election_information">Election Information</string>
+    <string name="voting_location">Voting Locations</string>
+    <string name="ballot_information">Ballot Information</string>
+    <string name="mailing_address">Mailing Address</string>
+    <string name="unfollow_election">Unfollow Election</string>
+    <string name="follow_election">Follow Election</string>
+
+    <string name="address_line_1">Address Line 1</string>
+    <string name="address_line_2">Address Line 2</string>
+    <string name="city">City</string>
+    <string name="zip">Zip</string>
+
+    <string name="error_no_connection">No internet connection</string>
+    <string name="permission_denied_explanation">You need to grant location permission in order to get the address.</string>
 
 </resources>

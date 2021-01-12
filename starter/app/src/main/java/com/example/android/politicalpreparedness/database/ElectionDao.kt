@@ -1,22 +1,35 @@
 package com.example.android.politicalpreparedness.database
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.example.android.politicalpreparedness.network.models.Election
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ElectionDao {
 
-    //TODO: Add insert query
+    // Add insert query
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(election: Election): Long
 
-    //TODO: Add select all election query
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(listElection: List<Election>)
 
-    //TODO: Add select single election query
+    // Add select all election query
+    @Query("SELECT * FROM election_table ORDER BY name ASC")
+    fun getElections(): Flow<List<Election>>
 
-    //TODO: Add delete query
+    // Add select single election query
+    @Query("SELECT * FROM election_table WHERE id = :electionId")
+    fun getElectionById(electionId: Int): Flow<Election?>
 
-    //TODO: Add clear query
+    @Query("SELECT EXISTS(SELECT 1 FROM election_table WHERE id = :electionId LIMIT 1)")
+    fun checkElectionById(electionId: Int): Flow<Boolean>
 
+    // Add delete query
+    @Query("DELETE FROM election_table WHERE id=:electionId")
+    suspend fun deleteElectionById(electionId: Int)
+
+    // Add clear query
+    @Query("DELETE FROM election_table")
+    fun clearElection()
 }

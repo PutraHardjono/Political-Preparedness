@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="representative"
+            type="com.example.android.politicalpreparedness.representative.model.Representative" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/representative_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:layout_marginStart="16dp"
+            profileImage="@{representative.official.photoUrl}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_profile" />
+
+        <TextView
+            android:id="@+id/office_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:textAppearance="@style/TextAppearance.Name"
+            tools:text="Office Name"
+            android:text="@{representative.office.name}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/representative_photo"
+            app:layout_constraintTop_toTopOf="@+id/representative_photo" />
+
+        <TextView
+            android:id="@+id/official_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            tools:text="Representative Name"
+            android:text="@{representative.official.name}"
+            android:textAppearance="@style/TextAppearance.Name2"
+            app:layout_constraintEnd_toStartOf="@+id/www_icon"
+            app:layout_constraintStart_toStartOf="@+id/office_name"
+            app:layout_constraintTop_toBottomOf="@+id/office_name" />
+
+        <TextView
+            android:id="@+id/party_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            tools:text="Party"
+            android:text="@{representative.official.party}"
+            android:textAppearance="@style/TextAppearance.Name3"
+            app:layout_constraintBottom_toBottomOf="@+id/representative_photo"
+            app:layout_constraintEnd_toStartOf="@+id/www_icon"
+            app:layout_constraintStart_toStartOf="@+id/office_name"
+            app:layout_constraintTop_toBottomOf="@+id/official_name" />
+
+        <ImageView
+            android:id="@+id/twitter_icon"
+            android:layout_width="@dimen/icon_redirect_size"
+            android:layout_height="@dimen/icon_redirect_size"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/representative_photo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/office_name"
+            app:srcCompat="@drawable/ic_twitter" />
+
+        <ImageView
+            android:id="@+id/facebook_icon"
+            android:layout_width="@dimen/icon_redirect_size"
+            android:layout_height="@dimen/icon_redirect_size"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/twitter_icon"
+            app:layout_constraintEnd_toStartOf="@+id/twitter_icon"
+            app:layout_constraintTop_toTopOf="@+id/twitter_icon"
+            app:srcCompat="@drawable/ic_facebook" />
+
+        <ImageView
+            android:id="@+id/www_icon"
+            android:layout_width="@dimen/icon_redirect_size"
+            android:layout_height="@dimen/icon_redirect_size"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/twitter_icon"
+            app:layout_constraintEnd_toStartOf="@+id/facebook_icon"
+            app:layout_constraintTop_toTopOf="@+id/twitter_icon"
+            app:srcCompat="@drawable/ic_www" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

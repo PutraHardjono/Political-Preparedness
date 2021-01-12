@@ -7,11 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.politicalpreparedness.R
 import com.example.android.politicalpreparedness.databinding.ViewholderRepresentativeBinding
+//import com.example.android.politicalpreparedness.databinding.ViewholderRepresentativeBinding
 import com.example.android.politicalpreparedness.network.models.Channel
 import com.example.android.politicalpreparedness.representative.model.Representative
 
@@ -33,13 +35,27 @@ class RepresentativeViewHolder(val binding: ViewholderRepresentativeBinding): Re
         binding.representative = item
         binding.representativePhoto.setImageResource(R.drawable.ic_profile)
 
-        //TODO: Show social links ** Hint: Use provided helper methods
-        //TODO: Show www link ** Hint: Use provided helper methods
+        // Show social links ** Hint: Use provided helper methods
+        item.official.channels?.let { showSocialLinks(it) }
+
+        // Show www link ** Hint: Use provided helper methods
+        item.official.urls?.let { showWWWLinks(it) }
 
         binding.executePendingBindings()
     }
 
-    //TODO: Add companion object to inflate ViewHolder (from)
+    // Add companion object to inflate ViewHolder (from)
+    companion object {
+        fun from(parent: ViewGroup): RepresentativeViewHolder {
+            return RepresentativeViewHolder(
+                    DataBindingUtil.inflate(
+                            LayoutInflater.from(parent.context),
+                            R.layout.viewholder_representative,
+                            parent,
+                            false)
+            )
+        }
+    }
 
     private fun showSocialLinks(channels: List<Channel>) {
         val facebookUrl = getFacebookUrl(channels)
@@ -75,9 +91,17 @@ class RepresentativeViewHolder(val binding: ViewholderRepresentativeBinding): Re
         val intent = Intent(ACTION_VIEW, uri)
         itemView.context.startActivity(intent)
     }
-
 }
 
-//TODO: Create RepresentativeDiffCallback
+// Create RepresentativeDiffCallback
+class RepresentativeDiffCallback: DiffUtil.ItemCallback<Representative>() {
+    override fun areItemsTheSame(oldItem: Representative, newItem: Representative): Boolean {
+        return oldItem.office.division.id == newItem.office.division.id
+    }
 
-//TODO: Create RepresentativeListener
+    override fun areContentsTheSame(oldItem: Representative, newItem: Representative): Boolean {
+        return oldItem == newItem
+    }
+}
+
+// Create RepresentativeListener

@@ -1,18 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Add node to connect Election ViewModel -->
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/refreshLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.example.android.politicalpreparedness.MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="com.example.android.politicalpreparedness.MainActivity">
+        android:layout_height="match_parent">
 
-        <!-- TODO: Add Upcoming Election Recycler and Header -->
+        <!-- Add Upcoming Election Recycler and Header -->
+        <TextView
+            android:id="@+id/text_upcoming_election"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/upcoming_election"
+            android:textAppearance="@style/TextAppearance.Header"
+            app:layout_constraintBottom_toTopOf="@+id/upcoming_recyclerView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- TODO: Add Saved Election Recycler and Header -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/upcoming_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/text_saved_elections"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_upcoming_election" />
+
+        <ProgressBar
+            android:id="@+id/upcoming_election_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+
+        <!-- Add Saved Election Recycler and Header -->
+        <TextView
+            android:id="@+id/text_saved_elections"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/saved_elections"
+            android:textAppearance="@style/TextAppearance.Header"
+            app:layout_constraintBottom_toTopOf="@+id/saved_election_recyclerView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/upcoming_recyclerView" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/saved_election_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_saved_elections" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

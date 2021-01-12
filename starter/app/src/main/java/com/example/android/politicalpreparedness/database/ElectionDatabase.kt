@@ -13,7 +13,7 @@ abstract class ElectionDatabase: RoomDatabase() {
 
     abstract val electionDao: ElectionDao
 
-    companion object {
+    /*companion object {
 
         @Volatile
         private var INSTANCE: ElectionDatabase? = null
@@ -37,6 +37,6 @@ abstract class ElectionDatabase: RoomDatabase() {
             }
         }
 
-    }
+    }*/
 
 }

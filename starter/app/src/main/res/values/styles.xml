@@ -2,13 +2,40 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <!-- TODO: Add necessary styles -->
+    <!-- Header-->
+    <style name="TextAppearance.Header" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/gray50</item>
+    </style>
+
+    <!-- Date -->
+    <style name="TextAppearance.Date" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/gray50</item>
+    </style>
+
+    <style name="TextAppearance.Name" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textColor">@color/gray30</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.Name2" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="android:textColor">@color/gray50</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="TextAppearance.Name3" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="android:textColor">@color/gray50</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
 
 </resources>
